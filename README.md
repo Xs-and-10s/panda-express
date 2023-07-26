@@ -1,14 +1,62 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# The Silence of Barbenheimer
+
+A Next.js app that uses [Panda](https://panda-css.com) instead of Tailwind
+
+### _(like tailwindcss but perhaps better?)_
+- typesafe css-in-jss 
+- build time generated styles
+- RSC (react server components / next.js) compatible
+- multi-variant support
+- reset
+- base
+- tokens
+- recipes
+- utilities
+
+## Initial setup _(already done)_
+
+1. Run the following scripts
+```bash
+pnpm dlx create-next-app@latest --use-pnpm
+cd panda-express # or whatever you name the app
+pnpm i -D @pandacss/dev
+pnpm panda init --postcss
+```
+
+2. Create a `index.css` file in your project that contains:
+
+```css
+@layer reset, base, tokens, recipes, utilities;
+```
+
+3. Import the `index.css` file at the root of your project.
+
+_(I just wrote over `globals.css`)_
+
+4. Change the next.config.js file to the following:
+
+```js
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  experimental: {
+    serverActions: true,
+  },
+};
+
+module.exports = nextConfig;
+```
 
 ## Getting Started
 
-First, run the development server:
+If you haven't already, run 
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
+pnpm i
+```
+
+After the dependencies have been installed, run the development server:
+
+```bash
 pnpm dev
 ```
 
